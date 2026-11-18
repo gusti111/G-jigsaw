@@ -28,6 +28,24 @@ G-Jigsaw turns an image selected by the player into an interactive jigsaw puzzle
 
 Images are selected locally in the browser; the project does not require an image-upload service.
 
+## How a puzzle session works
+
+```mermaid
+flowchart TD
+    A["Open G-Jigsaw"] --> B["Select a local image"]
+    B --> C["Choose difficulty and puzzle options"]
+    C --> D["Generate and shuffle pieces"]
+    D --> E["Arrange pieces on the canvas"]
+    E --> F{"Need assistance?"}
+    F -->|Yes| G["Use hint or auto-place helper"]
+    G --> E
+    F -->|No| H{"Puzzle complete?"}
+    H -->|No| E
+    H -->|Yes| I["Finish the puzzle"]
+```
+
+All image selection and puzzle interaction happen in the browser; no remote upload service is involved.
+
 ## Technology
 
 - HTML5
